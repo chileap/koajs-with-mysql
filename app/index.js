@@ -7,7 +7,7 @@ import bodyParser from 'koa-bodyparser';
 import methodOverride from 'koa-methodoverride';
 import logger from 'koa-logger';
 import flashMessage from 'koa-flash-message';
-
+import session from 'koa-generic-session';
 import models from './models';
 
 import config from '../config/config';
@@ -16,6 +16,8 @@ import router from '../routes';
 const app = new Koa();
 
 app.keys = [config.secretKeyBase];
+
+app.use(convert(session()));
 
 app.use(bodyParser());
 app.use(methodOverride((req, _res) => {
@@ -43,6 +45,7 @@ app.use(new CSRF({
   disableQuery: false
 }));
 
+app.use(flashMessage);
 app.use(router.routes(), router.allowedMethods());
 
 if (process.argv[2] && process.argv[2][0] == 'c') {

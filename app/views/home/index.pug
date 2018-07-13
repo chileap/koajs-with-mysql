@@ -1,1 +1,21 @@
-h1 Hello
+extends ../layout/layout.pug
+block content
+  h1 Todo List
+  a(href="/todos/new") create new todo
+  table
+    tr
+      th Title
+      th Description
+      th Status
+      th
+    each todo in todos
+      tr
+        td= todo.title
+        td= todo.description
+        td= todo.status
+        td
+          a(href="/todos/"+todo.id) show
+        td
+          a(href="/todos/"+todo.id+"/edit") edit
+        td
+          a(href="/todos/"+todo.id+"/delete") delete

@@ -1,0 +1,6 @@
+extends ../layout/layout.pug
+block content
+  p= todo.title
+  p= todo.description
+  p= todo.status
+  a(href="/todos/"+todo.id+"/edit") edit

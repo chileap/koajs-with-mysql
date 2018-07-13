@@ -1,0 +1,31 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title
+      = title || 'Home'
+      = ' | Todo App'
+    block dynamicCss
+    meta(name="csrf-param" content="_csrf")
+    meta(name="csrf-token" content=csrf)
+  body
+    .navbar
+      .container
+        .navbar-header
+          a.nav-logo(href="/") Todo App
+        .navbar-container
+          ul.nav.navbar-nav.navbar-menu
+            li
+              a.nav-item(href="/") Home
+
+    .container
+      - var messages = flashMessage && flashMessage.messages
+      - if (messages)
+        - var messageKeys = Object.keys(messages)
+        each messageKey in messageKeys
+          .alert(class=`alert-${messageKey}`)
+            a(class="close" data-dismiss='alert' href="#") x
+            = messages[messageKey]
+      block content

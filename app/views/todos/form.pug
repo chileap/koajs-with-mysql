@@ -1,0 +1,14 @@
+form(action=todoFormPath method="post")
+  input(type="hidden" name="_csrf" value=csrf)
+  .todo-title
+    - if (todo.id)
+      input(type="hidden" name="_method" value='put')
+    input(type="text" name="title" class="form-control" placeholder="Todo Title" value=todo.title required autofocus)
+  .todo-description
+    textarea(class="textarea form-control" name="description" placeholder="Todo Description" required autofocus)
+      = todo.description
+
+  .todo-status
+    input(class="text form-control" name="status" placeholder="Todo status" value=todo.status required autofocus)
+
+  button(class="btn btn-info btn-block" type="submit") Save

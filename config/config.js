@@ -1,7 +1,8 @@
+require('dotenv').config();
 var _ = require('lodash');
 var development = require('./development');
 
-var env = process.env.NODE_ENV || 'development';
+var env = process.env.NODE_ENV;
 var configs = {
   development: development,
 };

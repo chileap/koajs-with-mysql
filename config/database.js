@@ -1,3 +1,4 @@
+require('dotenv').config();
 var database = {
   development: {
     username: process.env.DATABASE_USERNAME_DEV,
