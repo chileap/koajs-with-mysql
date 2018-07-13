@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import Router from 'koa-router';
-import home from '../app/controllers/home';
+import home from '../controllers/home';
 
 const basename = path.basename(module.filename);
 const router = Router();

@@ -11,7 +11,7 @@ import session from 'koa-generic-session';
 import models from './models';
 
 import config from '../config/config';
-import router from '../routes';
+import router from './routes';
 
 const app = new Koa();
 

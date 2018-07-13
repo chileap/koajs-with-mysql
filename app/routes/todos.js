@@ -1,5 +1,5 @@
 import Router from 'koa-router';
-import todos from '../app/controllers/todos';
+import todos from '../controllers/todos';
 
 const router = Router({
   prefix: '/todos'
