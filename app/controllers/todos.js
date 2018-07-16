@@ -1,5 +1,11 @@
 import models from '../models/index';
 
+const statusValues = [
+  {key: 'new', value: 'New'},
+  {key: 'progress', value: 'In Progress'},
+  {key: 'done', value: 'Done'}
+]
+
 const show = async (ctx, _next) => {
   const todo = await models.Todo.findById(ctx.params.id);
   if(todo == null){
@@ -16,11 +22,13 @@ const show = async (ctx, _next) => {
 };
 
 const newTodo = async (ctx, _next) => {
+
   const locals = {
     nav: 'newTodo',
     todo: {},
     todoFormPath: '/todos',
-    csrf: ctx.csrf
+    csrf: ctx.csrf,
+    statusValues: statusValues
   };
   console.log(ctx)
   await ctx.render('todos/new', locals);
@@ -50,6 +58,7 @@ const edit = async (ctx, _next) => {
     nav: 'todo',
     todo: todo,
     todoFormPath: `/todos/${todo.id}`,
+    statusValues: statusValues,
     csrf: ctx.csrf
   };
   await ctx.render('todos/edit', locals);
@@ -105,7 +114,6 @@ const checkParamsBody = async (ctx, next) => {
     title: body.title,
     description: body.description,
     status: body.status,
-    createdAt: new Date(),
     updatedAt: new Date()
   };
   await next();

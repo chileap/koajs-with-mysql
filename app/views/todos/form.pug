@@ -9,6 +9,9 @@ form(action=todoFormPath method="post")
       = todo.description
 
   .todo-status
-    input(class="text form-control" name="status" placeholder="Todo status" value=todo.status required autofocus)
-
+    select(name='status')
+      option(value='') Please Selete Status
+      for statusValue in statusValues
+        option(value=statusValue.key selected=(todo.status == statusValue.key))
+          = statusValue.value
   button(class="btn btn-info btn-block" type="submit") Save

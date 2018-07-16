@@ -8,8 +8,7 @@ html
       = title || 'Home'
       = ' | Todo App'
     block dynamicCss
-    meta(name="csrf-param" content="_csrf")
-    meta(name="csrf-token" content=csrf)
+
   body
     .navbar
       .container
@@ -29,3 +28,4 @@ html
             a(class="close" data-dismiss='alert' href="#") x
             = messages[messageKey]
       block content
+    block dynamicJs

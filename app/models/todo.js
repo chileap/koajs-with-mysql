@@ -14,8 +14,8 @@ module.exports = (sequelize, DataTypes) => {
       title: params.title,
       description: params.description,
       status: params.status,
-      createdAt: params.createdAt,
-      updatedAt: params.updatedAt
+      createdAt: new Date(),
+      updatedAt: new Date()
     });
     await newTodo.save(function(err, res) {
       if(err)
