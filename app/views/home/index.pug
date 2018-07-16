@@ -2,6 +2,12 @@ extends ../layout/layout.pug
 block content
   h1 Todo List
   a(href="/todos/new") create new todo
+
+  form(action=searchFormPath method="get")
+    input(type="text" name="title" class="form-control" placeholder="title")
+    input(type="text" name="description" class="form-control" placeholder="description")
+    button(class="btn btn-info btn-block" type="submit") Search
+
   table
     tr
       th Title
